@@ -18,4 +18,9 @@ public class MyController {
     public ResponseEntity<String> getHello(@RequestParam String name){
         return new ResponseEntity<>("Hello " + name + " from bridgelabz", HttpStatus.OK);
     }
+
+    @GetMapping("/hello/param/{name}")
+    public ResponseEntity<String> hello(@RequestParam String name){
+        return new ResponseEntity<>("Hello " + name + " from bridgelabz", HttpStatus.OK);
+    }
 }
