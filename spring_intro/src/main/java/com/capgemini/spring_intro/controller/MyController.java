@@ -1,10 +1,11 @@
 package com.capgemini.spring_intro.controller;
 
+import com.capgemini.spring_intro.dto.DtoMapper;
+import com.capgemini.spring_intro.dto.User;
+import com.capgemini.spring_intro.dto.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MyController {
@@ -22,5 +23,10 @@ public class MyController {
     @GetMapping("/hello/param/{name}")
     public ResponseEntity<String> hello(@RequestParam String name){
         return new ResponseEntity<>("Hello " + name + " from bridgelabz", HttpStatus.OK);
+    }
+
+    @PostMapping("/post/user")
+    public ResponseEntity<UserDto> postUser(@RequestBody User user){
+        return new ResponseEntity<>(DtoMapper.mapToUserDto(user), HttpStatus.ACCEPTED);
     }
 }
