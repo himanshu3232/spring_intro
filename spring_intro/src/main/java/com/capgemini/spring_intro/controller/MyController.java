@@ -29,4 +29,9 @@ public class MyController {
     public ResponseEntity<UserDto> postUser(@RequestBody User user){
         return new ResponseEntity<>(DtoMapper.mapToUserDto(user), HttpStatus.ACCEPTED);
     }
+    
+    @PutMapping("/hello/put/{name}")
+    public ResponseEntity<String> getHello(@PathVariable String firstName, @RequestParam String lastName){
+        return new ResponseEntity<>("Hello " + firstName + lastName + " from bridgelabz", HttpStatus.OK);
+    }
 }
